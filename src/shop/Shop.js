@@ -8,18 +8,18 @@ export class Shop extends Component {
       <div className="container-fluid">
         <div className="row">
           <div className="col bg-dark text-white">
-            <div className="navbar-brand">SPORTS STORE</div>
+            <div className="navbar-brand">24/SEVEN</div>
           </div>
         </div>
         <div className="row">
           <div className="col-3 p-2">
             <CategoryNavigation
               baseUrl="/shop/products"
-              categories={this.props.categories}
+              categories={ this.props.categories }
             />
           </div>
           <div className="col-9 p-2">
-            <ProductList products={this.props.products} />
+            <ProductList products={ this.props.products } />
           </div>
         </div>
       </div>
