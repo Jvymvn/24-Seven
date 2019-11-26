@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Link } from "rect-router-dom";
+import { Link } from "react-router-dom";
 
 export class CartSummary extends Component {
     getSummary = () => {
