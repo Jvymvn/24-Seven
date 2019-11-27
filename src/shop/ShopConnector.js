@@ -11,7 +11,7 @@ import {
   clearCart
 } from "../data/CartActionCreators";
 import { CartDetails } from "./CartDetails";
-import { DataGetter } from "../data/DataGetter";
+import {DataGetter} from "../data/DataGetter";
 
 const mapStateToProps = dataStore => ({
   ...dataStore
