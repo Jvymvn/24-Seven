@@ -58,7 +58,6 @@ export const ShopConnector = connect(
     }
     componentDidMount() {
       this.props.loadData(DataTypes.CATEGORIES);
-      // this.props.loadData(DataTypes.PRODUCTS);
     }
   }
 );
