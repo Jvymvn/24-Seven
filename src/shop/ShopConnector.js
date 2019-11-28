@@ -67,6 +67,3 @@ export const ShopConnector = connect(
     }
   }
 );
-
-
-// THANKS FOR WATCHING! <3
