@@ -40,6 +40,9 @@ export class ValidatedForm extends Component {
         const name = modelItem.name || modelItem.label.toLowerCase();
         return <div className="form-group" key={modelItem.label}>
             <label>{modelItem.label}</label>
+            <ValidationError errors={ this.state.validationErrors[name]}/>
+            <input className="form-control" name={ name } ref={ this.registerRef }
+                {...this.props.defaultAttrs }{...modelItem.attrs}/>
         </div>
     }
 
@@ -59,5 +62,3 @@ export class ValidatedForm extends Component {
         </React.Fragment>
     }
 }
-
-export default ValidatedForm
