@@ -62,8 +62,8 @@ export const ShopConnector = connect(
         </Switch>
       );
     }
-    componentDidMount() {
-      this.props.loadData(DataTypes.CATEGORIES);
-    }
+
+    componentDidMount = () => this.props.loadData(DataTypes.CATEGORIES);
+
   }
 );
