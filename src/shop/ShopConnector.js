@@ -34,6 +34,7 @@ export const ShopConnector = connect(
 )(
   class extends Component {
     render() {
+      // Refactor using switch? Import as * ??
       return (
         <Switch>
           <Redirect
