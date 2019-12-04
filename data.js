@@ -1,6 +1,6 @@
 let faker = require("faker");
 let products = [];
-let categories = ["Watersports", "Soccer", "Chess", "Running"];
+let categories = ["Watersports", "Soccer", "Chess"];
 faker.seed(100);
 for (let i = 1; i <= 503; i++){
     let category = faker.helpers.randomize(categories);
