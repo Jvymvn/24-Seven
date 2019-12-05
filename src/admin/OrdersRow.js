@@ -17,7 +17,7 @@ export class OrdersRow extends Component {
             </td>
             <td className="text-center">
                 <button className="btn btn-sm btn-block bg-muted" onClick={ this.props.toggleShipped } >
-                    { this.getShipping( this.prop.order )}
+                    { this.getShipping( this.props.order )}
                     <span>
                         {this.props.order.shipped ? " Shipped" : " Pending"}
                     </span>

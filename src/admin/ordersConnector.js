@@ -1,6 +1,6 @@
 import { graphql } from 'react-apollo';
 import { ordersSummaryQuery } from "./clientQueries";
-import { ordersTable } from "./OrdersTable";
+import { OrdersTable } from "./OrdersTable";
 
 const vars = {
     onlyShipped: false, page: 1, pageSize: 10, sort: "id"
@@ -21,4 +21,4 @@ export const OrdersConnector = graphql(ordersSummaryQuery,
             setSortProperty: (key) => { vars.sort = key; refetch(vars)}
         })
     }
-)(ordersTable)
+)(OrdersTable)

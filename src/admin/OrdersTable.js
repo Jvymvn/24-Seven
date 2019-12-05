@@ -4,7 +4,7 @@ import {PaginationControls} from "../PaginationControls";
 
 export class OrdersTable extends Component {
     render(){
-        <div>
+        return <div>
             <h4 className="bg-info text-white text-center p-2">
                 {this.props.totalSize } Orders
             </h4>
@@ -29,3 +29,4 @@ export class OrdersTable extends Component {
         </div>
     }
 }
+
