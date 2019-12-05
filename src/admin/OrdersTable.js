@@ -2,6 +2,7 @@ import React, {Component} from "react";
 import { OrdersRow } from "./OrdersRow";
 import {PaginationControls} from "../PaginationControls";
 
+// To display order data
 export class OrdersTable extends Component {
     render(){
         return <div>

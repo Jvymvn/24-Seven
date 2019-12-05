@@ -1,3 +1,5 @@
+// GraphQl function is the counterpart to the connect and withRouter functions,
+// Which connects a component to the GraphQl features by creating a HOC
 import { graphql } from 'react-apollo';
 import { ordersSummaryQuery } from "./clientQueries";
 import { OrdersTable } from "./OrdersTable";
@@ -5,6 +7,20 @@ import { OrdersTable } from "./OrdersTable";
 const vars = {
     onlyShipped: false, page: 1, pageSize: 10, sort: "id"
 }
+
+// GraphQl accepts arguments for the query and a configuration object 
+// and returns a function that is used to wrap the component
+
+// Options prop -- used to create the set of variables that will be applied to the query
+// Props prop -- used to ceate the props that will be passed to the display component
+// and is provided with a data object that combines 
+// details of the query progress
+// the response from the server
+// functions used to refresh the query
+
+// three props are selected from the data object 
+// and used to create the props for the orders table component
+// the response is awaited, placeholder values are used until response is received
 
 export const OrdersConnector = graphql(ordersSummaryQuery,
     {

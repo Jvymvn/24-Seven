@@ -1,3 +1,8 @@
+// The schema in a Graphql services is implemented by a resolver.
+// Relies on lowdb database that json-server package uses for data storage
+// https://github.com/ typicode/lowdb
+// Each query is resolved using a series of functions
+
 const paginateQuery = (query, page = 1, pageSize = 5) => 
     query.drop((page - 1) * pageSize).take(pageSize);
 

@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+// Access to the GraphQl client is provided through the ApolloProvider
 import ApolloClient from "apollo-boost";
 import { ApolloProvider} from "react-apollo";
 import { GraphQlUrl } from "../data/Urls";
@@ -10,7 +11,7 @@ const graphQlClient = new ApolloClient({
 
 export class Admin extends Component {
     render() {
-        // access to the GraphQl client is provided through the ApolloProvider
+        // Access to the GraphQl client is provided through the ApolloProvider
         return <ApolloProvider client={graphQlClient}>
             <div className="container-fluid">
                 <div className="row">

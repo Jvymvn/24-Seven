@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 
+// Each order is displayed as a row in orders table
 export class OrdersRow extends Component {
     calcTotal = (products) => products.reduce((total, p) =>
         total += p.quantity * p.product.price, 0).toFixed(2);

@@ -69,3 +69,11 @@ This section has moved here: https://facebook.github.io/create-react-app/docs/tr
 
 
 Used Faker js for placeholder data
+
+Sample GraphQl mutation
+
+mutation {
+    updateProduct(product: {
+        id: 272, price: 100
+    }) { id, name, category, price }
+}

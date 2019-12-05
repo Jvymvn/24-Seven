@@ -1,3 +1,6 @@
+// To implement mutations in graphql 
+// Mutations defined in MutationSchema
+
 const storeProduct = ({product}, {db}) => 
     db.get("products").insert(product).value();
 
