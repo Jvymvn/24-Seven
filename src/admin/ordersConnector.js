@@ -24,6 +24,7 @@ const vars = {
 // the response is awaited, placeholder values are used until response is received
 
 // Compose function combines queries and mutations
+// The apollo client automatically updates its cache of data when there is a change.
 export const OrdersConnector = compose(
     graphql(ordersSummaryQuery,
     {
