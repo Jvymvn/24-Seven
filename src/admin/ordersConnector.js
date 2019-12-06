@@ -1,8 +1,9 @@
 // GraphQl function is the counterpart to the connect and withRouter functions,
 // Which connects a component to the GraphQl features by creating a HOC
-import { graphql } from 'react-apollo';
+import {compose, graphql} from "react-apollo";
 import { ordersSummaryQuery } from "./clientQueries";
 import { OrdersTable } from "./OrdersTable";
+import { shipOrder } from "./clientMutations";
 
 const vars = {
     onlyShipped: false, page: 1, pageSize: 10, sort: "id"
@@ -22,7 +23,9 @@ const vars = {
 // and used to create the props for the orders table component
 // the response is awaited, placeholder values are used until response is received
 
-export const OrdersConnector = graphql(ordersSummaryQuery,
+// Compose function combines queries and mutations
+export const OrdersConnector = compose(
+    graphql(ordersSummaryQuery,
     {
         options: (props) => ({ variables: vars}),
         props: ({data: {loading, orders, refetch}}) => ({
@@ -37,4 +40,8 @@ export const OrdersConnector = graphql(ordersSummaryQuery,
             setSortProperty: (key) => { vars.sort = key; refetch(vars)}
         })
     }
-)(OrdersTable)
+), graphql(shipOrder, {
+    props: ({ mutate }) => ({
+        toggleShipped: (id, shipped) => mutate({variables: {id, shipped}})
+    })
+}))(OrdersTable)
