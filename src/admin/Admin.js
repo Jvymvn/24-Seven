@@ -3,7 +3,7 @@ import React, { Component } from 'react';
 import ApolloClient from "apollo-boost";
 import { ApolloProvider} from "react-apollo";
 import { GraphQlUrl } from "../data/Urls";
-import { OrdersConnector } from "./ordersConnector";
+import { OrdersConnector } from "./OrdersConnector";
 
 const graphQlClient = new ApolloClient({
     uri: GraphQlUrl
