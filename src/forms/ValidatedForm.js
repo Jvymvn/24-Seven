@@ -2,6 +2,15 @@ import React, { Component } from 'react';
 import { ValidationError } from "./ValidationError";
 import { GetMessages } from "./ValidationMessages";
 
+/**
+ * @param {formModel}
+ * @param {defaultAttrs}
+ * @param {submitCallback}
+ * @param {cancelText}
+ * @param {cancelCallback}
+ * @param {submitText}
+ */
+
 export class ValidatedForm extends Component {
     constructor(props) {
         super(props);
