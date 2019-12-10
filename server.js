@@ -8,6 +8,8 @@ const { buildSchema } = require("graphql");
 const graphqlHTTP = require("express-graphql");
 const queryResolvers  = require("./serverQueriesResolver");
 const mutationResolvers = require("./serverMutationsResolver");
+//Auth middleware
+const auth = require("./authMiddleware");
 
 const fileName = process.argv[2] || "./data.js"
 const port = process.argv[3] || 3500;
@@ -35,9 +37,18 @@ createServer();
 
 app.use(cors());
 app.use(jsonServer.bodyParser);
+// app.use(auth);
+
+/**
+ * @typedef {URL} /api/products
+ * @typedef {URL} /api/categories
+ * @typedef {URL} /api/orders
+ */
 app.use("/api", (req,res, next) => router(req,res,next));
+
 //Graphiql browser localhost:3500/graphql
 app.use("/graphql", (req,res,next) => graph(req,res,next));
+
 
 chokidar.watch(fileName).on("change", () => {
     console.log("Reloading web service data...");
