@@ -1,5 +1,5 @@
 import { graphql, compose } from "react-apollo";
-import { productsTable } from "./ProductsTable";
+import { ProductsTable } from "./ProductsTable";
 import { productsList } from "./clientQueries";
 import { deleteProduct } from "./clientMutations";
 
@@ -41,4 +41,4 @@ export const ConnectedProducts = compose(
         deleteProduct: (id) => mutate({ variables: { id }})
     })
 })
-)(productsTable);
+)(ProductsTable);

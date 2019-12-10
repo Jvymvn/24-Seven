@@ -32,7 +32,7 @@ export class ProductCreator extends Component {
                 <div className="col m-2">
                     <Mutation mutation={this.mutation}>
                         {(saveMutation, { client }) => {
-                            return <ValidatedForm fromModel={this.formModel}
+                            return <ValidatedForm formModel={this.formModel}
                                 defaultAttrs={this.defaultAttrs} submitCallback={data => {
                                     saveMutation({ variables: { product: { ...data, price: Number(data.price) } } });
                                     if (this.props.mode !== "edit"){
