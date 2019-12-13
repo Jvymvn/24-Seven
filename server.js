@@ -37,7 +37,7 @@ createServer();
 
 app.use(cors());
 app.use(jsonServer.bodyParser);
-// app.use(auth);
+app.use(auth);
 
 /**
  * @typedef {URL} /api/products

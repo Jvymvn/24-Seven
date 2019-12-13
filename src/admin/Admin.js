@@ -10,12 +10,21 @@ import { ToggleLink } from "../ToggleLink";
 import { ConnectedProducts } from "./ProductsConnector";
 import { ProductEditor } from "./ProductEditor";
 import { ProductCreator } from "./ProductCreator";
+import { AuthPrompt } from "../auth/AuthPrompt";
+import { authWrapper } from "../auth/AuthWrapper";
 
-const graphQlClient = new ApolloClient({
-    uri: GraphQlUrl
-});
+// const graphQlClient = new ApolloClient({
+//     uri: GraphQlUrl
+// });
 
-export class Admin extends Component {
+export const Admin = authWrapper(class extends Component  {
+    constructor(props){
+        super(props);
+        this.client = new ApolloClient({
+            
+        })
+    }
+
     render() {
         // Access to the GraphQl client is provided through the ApolloProvider
         return <ApolloProvider client={graphQlClient}>
@@ -43,4 +52,4 @@ export class Admin extends Component {
             </div>
         </ApolloProvider>
     }
-}
+})
