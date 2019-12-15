@@ -1,11 +1,13 @@
 import React, { Component } from "react";
 import { ToggleLink } from "../ToggleLink";
+import { Link } from "react-router-dom";
 
 export class CategoryNavigation extends Component {
+
   render() {
     return (
       <React.Fragment>
-        <ToggleLink to={this.props.baseUrl} exact={true}>
+        <ToggleLink to={ `${this.props.baseUrl}/all` } exact={ false }>
           All
         </ToggleLink>
         {this.props.categories &&
@@ -17,6 +19,9 @@ export class CategoryNavigation extends Component {
               {cat}
             </ToggleLink>
           ))}
+          <Link className="btn btn-block btn-secondary fixed-bottom m-2 col-3" to="/admin">
+            Administration
+          </Link>
       </React.Fragment>
     );
   }
