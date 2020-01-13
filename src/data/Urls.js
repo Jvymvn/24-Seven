@@ -1,14 +1,27 @@
 import { DataTypes } from "./Types";
 
-const protocol = "http";
-const hostname = "localhost";
-const port = 3500;
+//DEVELOPMENT
+
+// const protocol = "http";
+// const hostname = "localhost";
+// const port = 3500;
+
+// export const RestUrls = {
+//     [DataTypes.PRODUCTS]: `${protocol}://${hostname}:${port}/api/products`,
+//     [DataTypes.CATEGORIES]: `${protocol}://${hostname}:${port}/api/categories`,
+//     [DataTypes.ORDERS]: `${protocol}://${hostname}:${port}/api/orders`
+// }
+
+// // Url to communicate with the GraphQl server
+// export const GraphQlUrl = `${protocol}://${hostname}:${port}/graphql`;
+
+//PRODUCTION
 
 export const RestUrls = {
-    [DataTypes.PRODUCTS]: `${protocol}://${hostname}:${port}/api/products`,
-    [DataTypes.CATEGORIES]: `${protocol}://${hostname}:${port}/api/categories`,
-    [DataTypes.ORDERS]: `${protocol}://${hostname}:${port}/api/orders`
+    [DataTypes.PRODUCTS]: `/api/products`,
+    [DataTypes.CATEGORIES]: `/api/categories`,
+    [DataTypes.ORDERS]: `/api/orders`
 }
 
-// Url to communicate with the GraphQl server
-export const GraphQlUrl = `${protocol}://${hostname}:${port}/graphql`;
+export const GraphQlUrl = `/graphql`;
+export const authUrl = `/login`;
