@@ -8,37 +8,38 @@ const vars = {
 }
 
 export const ConnectedProducts = compose(
-    graphql(productsList, {
-        options: (props) => ({variables: vars }),
-        props: ({data: { loading, products, refetch }}) => ({
-            totalSize: loading ? 0 : products.totalSize,
-            products: loading ? [] : products.products,
-            currentPage: vars.page,
-            pageCount: loading ? 0 : Math.ceil(products.totalSize / vars.pageSize),
-            navigateToPage: (page) => { vars.page = Number(page); refetch(vars)},
-            pageSize: vars.pageSize,
-            setPageSize: (size) => {vars.pageSize = Number(size); refetch(vars)},
-            sortKey: vars.sort,
-            setSortProperty: (key) => {vars.sort = key; refetch(vars)}
-        })
-    }
-), graphql(deleteProduct, {
-    // Mutations that remove objects do not automaticall update the local cached data.
-    // So we directly modify cached data
-    // We read cache, removes obj, reduce total size, then write back to cache
-    //Downside is that this method doesnt repaginate the data, to reflect deletion, displays fewer items until user navigates to another page
-    options: {
-        update: (cache, { data: { deleteProduct: {id}}}) => {
-            const queryDetails = { query: productsList, variables: vars};
-            const data = cache.readQuery(queryDetails)
-            data.products.products = 
-                data.products.products.filter(p => p.id !== id);
-            data.products.totalSize = data.products.totalSize - 1;
-            cache.writeQuery({...queryDetails, data});
+    graphql(productsList,
+        {
+            options: (props) => ({ variables: vars }),
+            props: ({data: { loading, products, refetch }}) => ({
+                totalSize: loading ? 0 : products.totalSize,
+                products: loading ? []: products.products,
+                currentPage: vars.page,
+                pageCount: loading ? 0 
+                    : Math.ceil(products.totalSize / vars.pageSize),
+                navigateToPage: (page) => { vars.page = Number(page); refetch(vars)},
+                pageSize: vars.pageSize,            
+                setPageSize: (size) => 
+                    { vars.pageSize = Number(size); refetch(vars)},
+                sortKey: vars.sort,
+                setSortProperty: (key) => { vars.sort = key; refetch(vars)},
+            })
         }
-    },
-    props: ({ mutate }) => ({
-        deleteProduct: (id) => mutate({ variables: { id }})
+    ),
+    graphql(deleteProduct, 
+        {
+            options: {
+                update: (cache, { data: { deleteProduct: { id }}}) => {
+                    const queryDetails = { query: productsList, variables: vars };
+                    const data = cache.readQuery(queryDetails)
+                    data.products.products = 
+                        data.products.products.filter(p => p.id !== id);
+                    data.products.totalSize = data.products.totalSize - 1;
+                    cache.writeQuery({...queryDetails, data });
+                }
+        },
+        props: ({ mutate }) => ({
+            deleteProduct: (id) => mutate({ variables: { id }})
+        })
     })
-})
 )(ProductsTable);
